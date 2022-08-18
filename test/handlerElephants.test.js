@@ -29,6 +29,5 @@ describe('Testes da função HandlerElephants', () => {
   it('teste 7 - retorna 4 inteiros na entrada de um argumento count ', () => {
     expect(handlerElephants('count')).toBe(4);
   });
-
-  
+ 
 });
