@@ -1,6 +1,5 @@
 const handlerElephants = require('../src/handlerElephants');
 
-const diasDasemana = ['Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday'];
 describe('Testes da função HandlerElephants', () => {
   it('teste 1 - retorna UNDEFINED sem entrada de parâmetro', () => {
     expect(handlerElephants()).toBe(undefined);
@@ -29,5 +28,4 @@ describe('Testes da função HandlerElephants', () => {
   it('teste 7 - retorna 4 inteiros na entrada de um argumento count ', () => {
     expect(handlerElephants('count')).toBe(4);
   });
- 
 });
