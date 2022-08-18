@@ -16,12 +16,12 @@ function weekSchedule() {
     if (day === 'Monday') {
       scheduleHours1[day] = {
         officeHour: 'CLOSED',
-        exhibition: 'The zoo will be closed',
+        exhibition: 'The zoo will be closed!',
       };
     } else {
       scheduleHours1[day] = {
         officeHour:
-        `Open from ${hours.day.open}am until ${hours.day.close}pm`,
+        `Open from ${hours[day].open}am until ${hours[day].close}pm`,
         exhibition:
         species.filter((animal) => animal.availability.includes(day)).map((animal) => animal.name),
       };
@@ -29,17 +29,18 @@ function weekSchedule() {
   });
   return scheduleHours1;
 }
+console.log(weekSchedule());
 
 function daySchedule(day) {
   const scheduleHours = {};
   if (day === 'Monday') {
     scheduleHours[day] = {
       officeHour: 'CLOSED',
-      exhibition: 'The zoo will be closed',
+      exhibition: 'The zoo will be closed!',
     };
   } else {
     scheduleHours[day] = {
-      officeHour: `Open from ${hours.day.open}am until ${hours.day.close}pm`,
+      officeHour: `Open from ${hours[day].open}am until ${hours[day].close}pm`,
       exhibition: species.filter((animal) => animal.availability.includes(day))
         .map((animal) => animal.name),
     };
