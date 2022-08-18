@@ -1,7 +1,7 @@
 const data = require('../data/zoo_data');
 const { employees } = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
-
+// Carol Lima 24 B e Isabela Costa 24 A me ajudaram nesta construção
 function getOldestFromFirstSpecies(id) {
   const aniID = employees.find((funcionario) => funcionario.id === id).responsibleFor[0];
 
