@@ -7,8 +7,7 @@ function countEntrants(entrants) {
   entrants.forEach((visitante) => {
     if (visitante.age < 18) {
       guests.child += 1;
-    }
-    else if (visitante.age >= 18 && visitante.age < 50) {
+    } else if (visitante.age >= 18 && visitante.age < 50) {
       guests.adult += 1;
     } else {
       guests.senior += 1;
@@ -16,14 +15,6 @@ function countEntrants(entrants) {
   });
   return guests;
 }
-// // console.log(countEntrants([
-// 	{ name:  'Lara Carvalho', age:  5 },
-// 	{ name:  'Frederico Moreira', age:  5 },
-// 	{ name:  'Pedro Henrique Carvalho', age:  5 },
-// 	{ name:  'Maria Costa', age:  18 },
-// 	{ name:  'Núbia Souza', age:  18 },
-// 	{ name:  'Carlos Nogueira', age:  50 },
-// ]));
 
 function calculateEntry(entrants) {
   // parte 2
