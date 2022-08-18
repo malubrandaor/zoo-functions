@@ -22,20 +22,20 @@ it('teste 2- para os argumentos Monday e 09:00 AM ', () => {
 it('teste 3- para os argumentos Wednesday e 09:00 PM ', () => {
   expect(getOpeningHours('Wednesday', '09:00-PM')).toBe(fechado);
 });
-it('teste 4- para os argumentos incompletos ', () => {
-  expect(getOpeningHours('Fri', '09:00-AM')).toThrow();
+it('teste 4- para os argumentos incompletos retorna erro ', () => {
+  expect(() => getOpeningHours('Fri', '09:00-AM')).toThrow();
 });
 it('teste 5- para os argumentos com erro de digitacao ', () => {
-  expect(getOpeningHours('Friday', '09:00-ZM')).toThrow();
+  expect(() => getOpeningHours('Friday', '09:00-ZM')).toThrow();
 });
 it('teste 6- para os argumentos com erro de identacao na hora', () => {
-  expect(getOpeningHours('Friday', 'B09:00-AM')).toThrow();
+  expect(() => getOpeningHours('Friday', 'B09:00-AM')).toThrow();
 });
 it('teste 7- para os argumentos com erro de identacao nos minutos', () => {
-  expect(getOpeningHours('Friday', '09:b0-AM')).toThrow();
+  expect(() => getOpeningHours('Friday', '09:b0-AM')).toThrow();
 });
 it('teste 8- para os argumentos com horario fora do schedule', () => {
-  expect(getOpeningHours('Friday', '13:00-PM')).toThrow('The hour must be between 0 and 12');
+  expect(() => getOpeningHours('Friday', '13:00-PM')).toThrow('The hour must be between 0 and 12');
 });
 it('teste 3- para os argumentos Friday e 09:00 PM ', () => {
   expect(getOpeningHours('Friday', '09:00-PM')).toBe('fechado');

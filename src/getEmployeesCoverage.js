@@ -2,13 +2,12 @@ const data = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
 const { employees } = require('../data/zoo_data');
 
-// obtive ajuda para o desenvolvimento deste codigo 
-
+// obtive ajuda para o desenvolvimento deste codigo
 
 function Empregados(emp) {
   const empID = emp.id;
   const nComp = `${emp.firstName} ${emp.lastName}`;
-  const nAnimal = emp.responsibleFor.map((anilID) => species
+  const nAnimal = emp.responsibleFor.map((aniID) => species
     .find((animal) => animal.id === aniID).name);
   const localizacao = nAnimal.map((nome) => species
     .find((animal) => animal.name === nome).location);
@@ -21,7 +20,7 @@ function Empregados(emp) {
   };
 }
 
-function getEmployeesCoverage(parametro) {
+function getEmployeesCoverage(p) {
   if (!p) {
     return employees.map((emp) => Empregados(emp));
   }
@@ -36,7 +35,7 @@ function getEmployeesCoverage(parametro) {
   if (!emp) {
     throw new Error('Informações inválidas');
   }
-  return Empregados(employee);
+  return Empregados(emp);
 }
 
 module.exports = getEmployeesCoverage;
