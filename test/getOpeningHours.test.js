@@ -1,6 +1,6 @@
 const getOpeningHours = require('../src/getOpeningHours');
 
-describe('Testes da função getOpeningHours', () => {});
+// describe('Testes da função getOpeningHours', () => {});
 const horarios = {
   Tuesday: { open: 8, close: 6 },
   Wednesday: { open: 8, close: 6 },
@@ -12,6 +12,9 @@ const horarios = {
 };
 // lint deu erro e pediu constante para 'zoo is closed'
 const fechado = 'The zoo is closed';
+const aberto = 'The zoo is open';
+
+describe('Testes da função getOpeningHours', () => {
 
 it('teste 1- sem parametro e retorna o schedule completo', () => {
   expect(getOpeningHours()).toEqual(horarios);
@@ -22,21 +25,25 @@ it('teste 2- para os argumentos Monday e 09:00 AM ', () => {
 it('teste 3- para os argumentos Wednesday e 09:00 PM ', () => {
   expect(getOpeningHours('Wednesday', '09:00-PM')).toBe(fechado);
 });
-it('teste 4- para os argumentos incompletos retorna erro ', () => {
-  expect(() => getOpeningHours('Fri', '09:00-AM')).toThrow();
-});
-it('teste 5- para os argumentos com erro de digitacao ', () => {
-  expect(() => getOpeningHours('Friday', '09:00-ZM')).toThrow();
-});
-it('teste 6- para os argumentos com erro de identacao na hora', () => {
-  expect(() => getOpeningHours('Friday', 'B09:00-AM')).toThrow();
-});
-it('teste 7- para os argumentos com erro de identacao nos minutos', () => {
-  expect(() => getOpeningHours('Friday', '09:b0-AM')).toThrow();
-});
-it('teste 8- para os argumentos com horario fora do schedule', () => {
-  expect(() => getOpeningHours('Friday', '13:00-PM')).toThrow('The hour must be between 0 and 12');
-});
-it('teste 3- para os argumentos Friday e 09:00 PM ', () => {
-  expect(getOpeningHours('Friday', '09:00-PM')).toBe('fechado');
+it('teste 4- se caso o dia seja um valor erraddo retorne erro:', () => {
+    expect(() => getOpeningHours('Fri', '09:00-AM')).toThrow();
+  });
+it('teste 5- se caso a hora seja um valor não localizado retorne erro:', () => {
+    expect(() => getOpeningHours('Friday', 'd9:00-AM')).toThrow();
+  });
+it('teste 6-  se caso houver minuscula seja um valor errado retorne erro:', () => {
+    expect(() => getOpeningHours('Friday', '09:00-Ac')).toThrow();
+  });
+it('teste 7- se as horas não estão entre 0 e 12 e retorna erro:', () => {
+    expect(() => getOpeningHours('Friday', '14:00-AM')).toThrow();
+  });
+it('teste 8- se os minutos não estão entre 0 e 59 e retorna erro:', () => {
+    expect(() => getOpeningHours('Friday', '12:70-AM')).toThrow();
+  });
+it('teste 9- se retorna aberto as terças-feiras as 09:00-AM :', () => {
+    expect(getOpeningHours('Tuesday', '09:00-AM')).toBe(aberto);
+  });
+it('teste 10- se retorna aberto as sextas-feiras as 12:00-PM :', () => {
+    expect(getOpeningHours('Friday', '12:00-PM')).toBe(aberto);
+  });  
 });
